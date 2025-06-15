@@ -2,37 +2,37 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KanMind - Dashboard</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>KanMind - Imprint</title>
 
-    <link rel="stylesheet" href="../../shared/css/variables.css">
-    <link rel="stylesheet" href="../../shared/css/standard.css">
-    <link rel="stylesheet" href="../../shared/css/fonts.css">
-    <link rel="stylesheet" href="../../shared/css/assets.css">
-    <link rel="stylesheet" href="../../shared/css/header_footer.css">
-    
+    <link rel="stylesheet" href="../../shared/css/variables.css" />
+    <link rel="stylesheet" href="../../shared/css/standard.css" />
+    <link rel="stylesheet" href="../../shared/css/fonts.css" />
+    <link rel="stylesheet" href="../../shared/css/assets.css" />
+    <link rel="stylesheet" href="../../shared/css/header_footer.css" />
+
     <script src="../../shared/js/ui_helper.js"></script>
     <script src="../../shared/js/api.js"></script>
     <script src="../../shared/js/header.js"></script>
 
     <script>
-        function checkNav(){
-            if(getAuthUserId() == null) document.querySelector("nav").remove();
+        function checkNav() {
+            if (getAuthUserId() == null) document.querySelector("nav").remove();
         };
     </script>
 </head>
 
 <body onload="setHeader(); checkNav()">
     <header onclick="redirectToDashboard()" class="main_header w_full">
-        <img src="../../assets/icons/logo_icon.svg" alt="" srcset="">
+        <img src="../../assets/icons/logo_icon.svg" alt="KanMind Logo" />
         <div id="head_content_right" class="d_flex_cc_gm head_content_right"></div>
     </header>
+
     <main class="w_full d_flex_ss_gl font_white_color">
 
         <nav class="font_sec_color w_full">
-            <a class="link_secondary" href="../dashboard/">Dashboard</a>
-            /
+            <a class="link_secondary" href="../dashboard/">Dashboard</a> /
             <a class="link_secondary" href="./index.html">Imprint</a>
         </nav>
 
@@ -40,24 +40,27 @@
 
         <section class="d_flex_ss_gm f_d_c">
             <h2>Legal Notice</h2>
-            
+
             <address>
-                <p><strong>Name:</strong> Max Mustermann</p>
-                <p><strong>Address:</strong> Sample Street 1, 12345 Sample City</p>
-                <p><strong>Phone:</strong> <a class="link_secondary" href="tel:+44123456789">+44 123 456 789</a></p>
-                <p><strong>Email:</strong> <a class="link_secondary" href="mailto:info@example.com">info@example.com</a></p>
+                <p><strong>Company Name:</strong> BBM Productions AG</p>
+                <p><strong>Address:</strong> Rheinstrasse 74, 4323 Wallbach, Switzerland</p>
+                <p><strong>Phone:</strong> <a class="link_secondary" href="tel:+41764885610">+41 76 488 56 10</a></p>
+                <p><strong>Email:</strong> <a class="link_secondary" href="mailto:leugzim.rullani@bbmproductions.ch">leugzim.rullani@bbmproductions.ch</a></p>
+                <p><strong>Developer:</strong> Leugzim Rullani, Software Engineer - System Integration | Team Lead Graphics</p>
             </address>
         </section>
 
         <section class="d_flex_ss_gm f_d_c">
             <h3>Disclaimer</h3>
             <p>
-                Despite careful content control, we assume no liability for the content of external links. 
+                Despite careful content control, we assume no liability for the content of external links.
                 The operators of the linked pages are solely responsible for their content.
             </p>
         </section>
+
     </main>
-    <footer class="main_footer  w_full">
+
+    <footer class="main_footer w_full">
         <nav class="d_flex_cs_gl">
             <a href="../privacy/index.html" class="link">Privacy Policy</a>
         </nav>
