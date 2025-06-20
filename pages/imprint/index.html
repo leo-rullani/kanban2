@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>KanMind - Imprint</title>
 
     <link rel="stylesheet" href="../../shared/css/variables.css" />
@@ -19,16 +19,15 @@
     <script>
         function checkNav() {
             if (getAuthUserId() == null) document.querySelector("nav").remove();
-        };
+        }
     </script>
 </head>
 
-<body onload="setHeader(); checkNav()">
+<body onload="setHeader();checkNav()">
     <header onclick="redirectToDashboard()" class="main_header w_full">
         <img onclick="redirectToDashboard()" src="../../assets/icons/bbm.png" alt="" height="48" />
         <div id="head_content_right" class="d_flex_cc_gm head_content_right"></div>
     </header>
-
     <main class="w_full d_flex_ss_gl font_white_color">
 
         <nav class="font_sec_color w_full">
@@ -40,14 +39,13 @@
 
         <section class="d_flex_ss_gm f_d_c">
             <h2>Legal Notice</h2>
-
-            <address>
+            <div style="font-style: normal;">
                 <p><strong>Company Name:</strong> BBM Productions AG</p>
                 <p><strong>Address:</strong> Rheinstrasse 74, 4323 Wallbach, Switzerland</p>
-                <p><strong>Phone:</strong> <a class="link_secondary" href="tel:+41764885610">+41 76 488 56 10</a></p>
-                <p><strong>Email:</strong> <a class="link_secondary" href="mailto:leugzim.rullani@bbmproductions.ch">leugzim.rullani@bbmproductions.ch</a></p>
+                <p><strong>Phone:</strong> <a class="font_sec_color" href="tel:+41764885610">+41 76 488 56 10</a></p>
+                <p><strong>Email:</strong> <a class="font_sec_color" href="mailto:leugzim.rullani@bbmproductions.ch">leugzim.rullani@bbmproductions.ch</a></p>
                 <p><strong>Developer:</strong> Leugzim Rullani, Software Engineer - System Integration | Team Lead Graphics</p>
-            </address>
+            </div>
         </section>
 
         <section class="d_flex_ss_gm f_d_c">
@@ -59,7 +57,6 @@
         </section>
 
     </main>
-
     <footer class="main_footer w_full">
         <nav class="d_flex_cs_gl">
             <a href="../privacy/index.html" class="link">Privacy Policy</a>
