@@ -1,22 +1,17 @@
 // Beispiel-User für Guest-Login (optional, kann im Frontend als Button angeboten werden)
 const GUEST_LOGIN = {
-    email: "leugzimrullani@outlook.com",
-    password: "Nike#1995"
+    email: "guest@kanmind.local.ch",
+    password: "GuestDemo123!"
 };
 
-// Basis-URLs für API-Endpunkte (auth und kanban getrennt)
-const API_BASE_URL_AUTH = 'http://127.0.0.1:8000/api/auth/';
-const API_BASE_URL_KANBAN = 'http://127.0.0.1:8000/api/kanban/';
+// Basis-URL für alle API-Endpunkte
+const API_BASE_URL = 'http://127.0.0.1:8000/api/';
 
-// Auth-Endpoints (relativ zur API_BASE_URL_AUTH)
-const LOGIN_URL = API_BASE_URL_AUTH + 'login/';
-const REGISTER_URL = API_BASE_URL_AUTH + 'registration/';
-const MAIL_CHECK_URL_AUTH = API_BASE_URL_AUTH + 'email-check/';
-
-// Kanban-Endpoints (relativ zur API_BASE_URL_KANBAN)
-const BOARDS_URL = API_BASE_URL_KANBAN + 'boards/';
-const MAIL_CHECK_URL_KANBAN = API_BASE_URL_KANBAN + 'email-check/';
-
-const TASKS_URL = API_BASE_URL_KANBAN + 'tasks/';
-const TASKS_ASSIGNED_URL = API_BASE_URL_KANBAN + 'tasks/assigned-to-me/';
-const TASKS_REVIEWER_URL = API_BASE_URL_KANBAN + 'tasks/reviewing/';
+// Endpunkte (relativ zur API_BASE_URL)
+const LOGIN_URL = 'login/';
+const REGISTER_URL = 'registration/';
+const BOARDS_URL = 'boards/';
+const MAIL_CHECK_URL = 'email-check/';
+const TASKS_URL = 'tasks/';
+const TASKS_ASSIGNED_URL = 'tasks/assigned-to-me/';
+const TASKS_REVIEWER_URL = 'tasks/reviewing/';
