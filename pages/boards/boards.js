@@ -1,16 +1,31 @@
+/**
+ * Object holding the current board being created.
+ * @type {{title: string, members: Array}}
+ */
 let currentCreateBoard = {
     "title" : "",
     "members":[]
 }
 
-
-
+/**
+ * Array storing all created boards.
+ * @type {Array}
+ */
 let boardList = []
 
+/**
+ * Redirects the user to the board page with the given board ID.
+ * @param {string|number} id - The unique identifier of the board.
+ */
 function redirectToBoard(id){
     window.location.href = "../../pages/board/?id="+id
 }
 
+/**
+ * Asynchronously fetches all boards and renders the board list if available.
+ * Updates the global boardList variable.
+ * @returns {Promise<void>}
+ */
 async function getAndRenderBoardList(){
     boardList = await getBoards()
     if(boardList){
@@ -18,6 +33,10 @@ async function getAndRenderBoardList(){
     }
 }
 
+/**
+ * Asynchronously fetches the list of boards from the backend API.
+ * @returns {Promise<Array|null>} Returns an array of boards if successful, otherwise null.
+ */
 async function getBoards(){
     let boardResp = await getData(BOARDS_URL);
 
@@ -28,6 +47,10 @@ async function getBoards(){
     }
 }
 
+/**
+ * Opens the board creation dialog, resets the currentCreateBoard object,
+ * and updates the UI elements for creating a new board.
+ */
 function openBoardCreateDialog(){
     toggleOpenId('dialog_wrapper')
     document.getElementById("dialog_wrapper").setAttribute("current-dialog", "board_create");
@@ -39,6 +62,11 @@ function openBoardCreateDialog(){
     document.getElementById("board_title_input").value = "";
 }
 
+/**
+ * Handles the process of inviting a member to the board during creation.
+ * Validates the entered email and proceeds if the email is valid.
+ * @returns {Promise<void>}
+ */
 async function boardCreateInviteMember(){
     let element = document.getElementById("create_board_email_input")
     let valid = validateMemberEmail(element, currentCreateBoard.members)
@@ -47,12 +75,20 @@ async function boardCreateInviteMember(){
     }
 }
 
+/**
+ * Resets the mail error state in the email input group for board creation.
+ */
 function resetMailError(){
     setError(false, "create_board_email_input_group")
 }
 
-
-
+/**
+ * Checks if the given email address exists and, if valid,
+ * adds the corresponding member to the currentCreateBoard.members array.
+ * Updates the member list UI or displays an error if the email is invalid.
+ * @param {HTMLInputElement} element - The input element containing the email address.
+ * @returns {Promise<void>}
+ */
 async function boardCreateCheckMailAddress(element){
     let mail = element.value.trim()
     let resp = await checkMailAddress(mail)
@@ -66,8 +102,13 @@ async function boardCreateCheckMailAddress(element){
     }
 }
 
-
-
+/**
+ * Handles the submission of the board creation form.
+ * Validates the board title and, if valid, sets the title in currentCreateBoard
+ * and calls the createBoard function.
+ * @param {Event} event - The form submission event.
+ * @returns {Promise<void>}
+ */
 async function boardCreateSubmit(event) {
     event.preventDefault();
     let element = document.getElementById("board_title_input")
@@ -77,6 +118,11 @@ async function boardCreateSubmit(event) {
     }
 }
 
+/**
+ * Creates a new board by sending its data to the backend.
+ * If creation fails, displays error messages; otherwise closes the dialog and refreshes the board list.
+ * @returns {Promise<void>}
+ */
 async function createBoard(){
     let boardMemberIds = currentCreateBoard.members.map(member => member.id)
     let response = await postData(BOARDS_URL, {"title": currentCreateBoard.title, "members": boardMemberIds});
@@ -89,6 +135,10 @@ async function createBoard(){
     }
 }
 
+/**
+ * Cancels the board creation process, resets the currentCreateBoard object,
+ * and closes the board creation dialog.
+ */
 function cancelCreateBoard(){
     currentCreateBoard = {
         "title" : "",
@@ -97,6 +147,10 @@ function cancelCreateBoard(){
     toggleOpenId('dialog_wrapper')
 }
 
+/**
+ * Renders the list of invited members in the board creation dialog.
+ * Updates the UI element with the current members from currentCreateBoard.
+ */
 function renderCreateDialogMemberList(){
     let htmltext = "";
     currentCreateBoard.members.forEach(member => {
@@ -105,11 +159,20 @@ function renderCreateDialogMemberList(){
     document.getElementById("create_board_member_list").innerHTML = htmltext;
 }
 
+/**
+ * Removes a member from the currentCreateBoard.members array by index
+ * and updates the member list in the dialog UI.
+ * @param {number} id - The index of the member to remove.
+ */
 function removeCurrentMember(id){
     currentCreateBoard.members = currentCreateBoard.members.splice(id, 1);
     renderCreateDialogMemberList();
 }
 
+/**
+ * Renders the list of boards filtered by the current search input.
+ * Updates the board list UI with matching boards or a message if none are found.
+ */
 function renderBoardList(){
     let htmltext = "";
     let searchValue = document.getElementById("board_search").value.trim().toLowerCase();
@@ -123,6 +186,11 @@ function renderBoardList(){
     document.getElementById("board_list").innerHTML = htmltext;
 }
 
+/**
+ * Returns the HTML template for a single board entry in the board list.
+ * @param {Object} board - The board object containing board details.
+ * @returns {string} The HTML string representing the board entry.
+ */
 function getBoardlistEntrieTemplate(board){
     return `    <li class="card d_flex_sc_gl w_full" onclick="redirectToBoard(${board.id})">
                     <h3>${board.title}</h3>
@@ -152,6 +220,12 @@ function getBoardlistEntrieTemplate(board){
                 </li>`
 }
 
+/**
+ * Updates the current board with the provided data by sending a PATCH request to the backend.
+ * Shows error messages if the update fails; otherwise refreshes the board list.
+ * @param {Object} data - The data to update the board with.
+ * @returns {Promise<Object>} The response from the backend.
+ */
 async function updateBoard(data){
     let response = await patchData(BOARDS_URL + currentSettingsBoard.id + "/", data);
     if (!response.ok) {
@@ -163,7 +237,11 @@ async function updateBoard(data){
     return response;
 }
 
-
+/**
+ * Deletes the current board by sending a DELETE request to the backend.
+ * Closes the dialog, refreshes the board list, and removes any lasting toast messages.
+ * @returns {Promise<void>}
+ */
 async function deleteBoard(){
     await deleteData(BOARDS_URL + currentSettingsBoard.id + "/");
     toggleOpenId('dialog_wrapper');
