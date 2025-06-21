@@ -60,7 +60,6 @@ function getLogedInHeaderTemplate() {
         } else {
             window.location.href = "../auth/login.html"
         }
-        
     }
     let currentUser = getAuthUser();
     return `
@@ -77,6 +76,10 @@ function getLogedInHeaderTemplate() {
                     <img src="../../assets/icons/view_board_yellow.svg" alt="" srcset=""> 
                     Boards
                 </p>
+                <p class="d_flex_sc_gm font_white_color" onclick="window.location.href = '../requests/index.html'">
+                    <img src="../../assets/icons/requests.svg" alt="" width="16" srcset=""> 
+                    Requests
+                </p>
             </div>
         </div>
         <div class="menu_btn_wrapper"> 
@@ -87,5 +90,5 @@ function getLogedInHeaderTemplate() {
                     Log out 
                 </p>
             </div>
-        </div>`
+        </div>`;
 }

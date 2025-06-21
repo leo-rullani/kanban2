@@ -93,8 +93,8 @@
     padding: 8px;
     border-radius: 8px;
     opacity: 1;
-
     transition: all 200ms ease-in-out;
+    
 }
 
 .menu_content>p,

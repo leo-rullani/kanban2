@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KanMind - Requests</title>
+
+    <link rel="stylesheet" href="../../shared/css/variables.css">
+    <link rel="stylesheet" href="../../shared/css/standard.css">
+    <link rel="stylesheet" href="../../shared/css/fonts.css">
+    <link rel="stylesheet" href="../../shared/css/assets.css">
+    <link rel="stylesheet" href="../../shared/css/form.css">
+    <link rel="stylesheet" href="../../shared/css/header_footer.css">
+    <link rel="stylesheet" href="./requests.css">
+
+    <link rel="icon" href="../../assets/icons/favicon.svg" type="image/svg+xml">
+
+    <!-- Scripte in exakt dieser Reihenfolge wie in Boards! -->
+    <script src="../../shared/js/config.js"></script>
+    <script src="../../shared/js/ui_helper.js"></script>
+    <script src="../../shared/js/api.js"></script>
+    <script src="../../shared/js/header.js"></script>
+    <script src="./requests.js"></script>
+</head>
+
+<body onload="setHeader(); getAndRenderRequestList()">
+    <header class="main_header w_full">
+        <img onclick="redirectToDashboard()" src="../../assets/icons/bbm.png" alt="" height="48" srcset="">
+        <div id="head_content_right" class="d_flex_cc_gm head_content_right"></div>
+    </header>
+    <main class="w_full d_flex_sc_gl">
+        <section class="w_full d_flex_cs_gl f_d_c">
+            <nav class="font_sec_color">
+                <a class="link_secondary" href="../dashboard/">Dashboard</a>
+                /
+                <a class="link_secondary" href="./index.html">Requests</a>
+            </nav>
+            <header class="d_flex_sc_gl w_full d_sb">
+                <h1 class="font_white_color">Your Requests</h1>
+                <form class="searchbar">
+                    <div class="form_group_w_icon_wo_label w_full">
+                        <img src="../../assets/icons/search_yellow.svg" alt="Icon">
+                        <input onkeyup="renderRequestList()" placeholder="Search" type="text" id="request_search" required>
+                        <label for="request_search" class="d_none">Search requests</label>
+                    </div>
+                </form>
+                <!-- Optional: Button für neue Requests -->
+                <!-- <button onclick="openRequestCreateDialog()" class="std_btn btn_prime d_flex_sc_gs add_btn">
+                    <img src="../../assets/icons/add_black.svg" alt="">
+                    <p>Create request</p>
+                </button> -->
+            </header>
+            <ul id="request_list" class="arrow_list request_list d_flex_sc_gl f_d_c w_full">
+                <li class="card d_flex_sc_gl w_full">
+                    <h3 class="font_prime_color">...No requests yet...</h3>
+                </li>
+            </ul>
+        </section>
+    </main>
+    <footer class="main_footer w_full">
+        <nav class="d_flex_cs_gl">
+            <a href="../privacy/index.html" class="link">Privacy Policy</a>
+            <a href="../imprint/index.html" class="link">Imprint</a>
+        </nav>
+    </footer>
+</body>
+</html>
