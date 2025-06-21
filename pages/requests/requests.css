@@ -1,4 +1,4 @@
-.searchbar>.form_group_w_icon_wo_label {
+.searchbar > .form_group_w_icon_wo_label {
     margin: 0;
     width: 400px;
     padding: var(--btn-pad);
@@ -16,27 +16,27 @@ header {
     gap: 8px;
 }
 
-.add_btn>img {
+.add_btn > img {
     padding: 2px;
     height: 22px;
     width: 22px;
 }
 
-@media screen and (max-width:780px) {
+@media screen and (max-width: 780px) {
     .searchbar {
         order: 2;
         width: 100%;
     }
 }
 
-@media screen and (max-width:1024px) {
-    .add_btn>p {
+@media screen and (max-width: 1024px) {
+    .add_btn > p {
         display: none;
     }
     .add_btn {
         padding: 4px;
     }
-    .searchbar>.form_group_w_icon_wo_label {
+    .searchbar > .form_group_w_icon_wo_label {
         width: 100%;
     }
 }
@@ -45,22 +45,67 @@ header {
     padding-left: 0;
 }
 
-.arrow_list li::before {
-    left: 16px;
+/* -------- NEU für Tabelle -------- */
+
+.table-responsive {
+    overflow-x: auto;
+    width: 100%;
+    margin-top: 1rem;
 }
 
-.request_list_entry_part {
-    border-left: var(--form-input-border);
-    display: flex;
-    gap: 8px;
-    padding: 0 24px;
+.request_table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 900px;
+    color: var(--font-prime-color);
+    font-size: 0.9rem;
 }
 
-@media screen and (max-width:780px) {
-    .request_list_entry_part{
-        padding: 0 12px;
+.request_table thead {
+    background-color: var(--bg-header);
+    color: var(--font-prime-color);
+    font-weight: 700;
+}
+
+.request_table thead th {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 2px solid var(--border-color);
+    white-space: nowrap;
+}
+
+.request_table tbody tr {
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.request_table tbody tr:hover {
+    background-color: var(--bg-hover);
+}
+
+.request_table tbody td {
+    padding: 10px 16px;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+.request_table tbody td:first-child {
+    font-weight: 600;
+}
+
+.text_center {
+    text-align: center;
+}
+
+/* Responsive Anpassung für kleine Bildschirme */
+@media screen and (max-width: 780px) {
+    .request_table {
+        min-width: 600px;
+        font-size: 0.85rem;
     }
-    .request_list > li{
-        gap: 8px
+    .request_table thead th,
+    .request_table tbody td {
+        padding: 8px 10px;
     }
 }

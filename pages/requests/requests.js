@@ -37,39 +37,46 @@ async function getRequests() {
 
 /**
  * Renders the list of requests filtered by the current search input.
- * Updates the UI with the filtered requests or a message if none are found.
+ * Updates the UI by filling the request table body or displaying a placeholder row.
  */
 function renderRequestList() {
     let htmltext = "";
     let searchInput = document.getElementById("request_search");
     let searchValue = searchInput ? searchInput.value.trim().toLowerCase() : "";
     let filteredRequests = requestList.filter(req => req.title && req.title.toLowerCase().includes(searchValue));
-    filteredRequests.forEach(req => {
-        htmltext += getRequestListEntryTemplate(req);
-    });
+
     if(filteredRequests.length <= 0){
-        htmltext = `<h3 class="font_prime_color">...No requests available...</h3>`;
+        htmltext = `<tr><td colspan="14" class="font_prime_color text_center">...No requests available...</td></tr>`;
+    } else {
+        filteredRequests.forEach(req => {
+            htmltext += getRequestListEntryTemplate(req);
+        });
     }
+
     document.getElementById("request_list").innerHTML = htmltext;
 }
 
 /**
- * Returns the HTML template for a single request entry in the request list.
+ * Returns the HTML template for a single request entry as a table row.
+ * Includes all relevant columns matching the table header.
  * @param {Object} request - The request object containing request details.
- * @returns {string} The HTML string representing the request entry.
+ * @returns {string} The HTML string representing the request row.
  */
 function getRequestListEntryTemplate(request) {
-    return `<li class="card d_flex_sc_gl w_full">
-                <h3>${request.title || "Untitled"}</h3>
-                <div class="request_list_entry_part d_flex_sc_gs">
-                    <img src="../../assets/icons/user_icon.svg" alt="">
-                    <p class="fs_m">${request.assignee_count || "-"}</p>
-                    <p>Assignees</p>
-                </div>
-                <div class="request_list_entry_part d_flex_sc_gs">
-                    <img src="../../assets/icons/calendar_icon.svg" alt="">
-                    <p class="fs_m">${request.due_date || "-"}</p>
-                    <p>Due</p>
-                </div>
-            </li>`;
+    return `<tr>
+                <td>${request.date || "-"}</td>
+                <td>${request.function || "-"}</td>
+                <td>${request.project || "-"}</td>
+                <td>${request.meeting_point || "-"}</td>
+                <td>${request.vehicle_out || "-"}</td>
+                <td>${request.start || "-"}</td>
+                <td>${request.end || "-"}</td>
+                <td>${request.vehicle_return || "-"}</td>
+                <td>${request.location || "-"}</td>
+                <td>${request.hotel || "-"}</td>
+                <td>${request.shuttle || "-"}</td>
+                <td>${request.status || "-"}</td>
+                <td>${request.deployment_location || "-"}</td>
+                <td>${request.order_number || "-"}</td>
+            </tr>`;
 }
