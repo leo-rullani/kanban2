@@ -1,17 +1,34 @@
+/**
+ * Logs out the current user by removing authentication credentials
+ * and redirecting to the login page.
+ */
 function logOut() {
     removeAuthCredentials()
     window.location.href = "../auth/login.html";
 }
 
+/**
+ * Sets up the header by rendering its template.
+ * @returns {Promise<void>}
+ */
 async function setHeader() {
     setHeaderTemplate()
 }
 
+/**
+ * Sets the header section's inner HTML by rendering the header template.
+ */
 function setHeaderTemplate() {
     let headerRef = document.getElementById('head_content_right')
     headerRef.innerHTML = getHeaderTemplate()
 }
 
+/**
+ * Returns the appropriate header HTML template based on the current page URL.
+ * Shows sign-up link on the login page, login link on the registration page,
+ * and the logged-in header template otherwise.
+ * @returns {string} The HTML string for the header.
+ */
 function getHeaderTemplate() {
     const currentUrl = window.location.href;
     
@@ -36,6 +53,10 @@ function getHeaderTemplate() {
     }
 }
 
+/**
+ * Closes all menu toggle buttons except the specified one by setting their 'open' attribute to 'false'.
+ * @param {HTMLElement} element - The menu button element to keep open.
+ */
 function closeOtherMenuBtns(element) {
     let menuBtns = document.querySelectorAll('.menu_toggle')
     menuBtns.forEach(btn => {
@@ -45,6 +66,12 @@ function closeOtherMenuBtns(element) {
     })
 }
 
+/**
+ * Returns the header HTML template for logged-in users.
+ * Redirects to login if no authenticated user ID is found,
+ * except on imprint or privacy pages.
+ * @returns {string} The HTML string for the logged-in header.
+ */
 function getLogedInHeaderTemplate() {
     const currentUrl = window.location.href;
     let currentUserId = getAuthUserId();
