@@ -1,3 +1,8 @@
+/**
+ * Draws a pie chart (doughnut) representing the status of assigned tickets.
+ * If no tickets are assigned, displays a placeholder message.
+ * @param {Array<number>} currentAssignedTickets - Array with ticket counts for each status.
+ */
 function drawPieChart(currentAssignedTickets) {
     let ticketData = getPieChartData(currentAssignedTickets)
     let labels = ['To-do', 'In progress', 'Review', 'Done'];
@@ -34,6 +39,11 @@ function drawPieChart(currentAssignedTickets) {
     });
 };
 
+/**
+ * Returns an array of ticket counts for each status used in the pie chart.
+ * @param {Array<Object>} currentAssignedTickets - Array of ticket objects with a status property.
+ * @returns {Array<number>} Array with counts for ['to-do', 'in-progress', 'review', 'done'].
+ */
 function getPieChartData(currentAssignedTickets) {
     return [
         currentAssignedTickets.filter(task => task.status == "to-do").length,
@@ -43,6 +53,11 @@ function getPieChartData(currentAssignedTickets) {
     ]
 }
 
+/**
+ * Draws a custom wave chart to visualize the progress percentage.
+ * If progress is invalid, displays a fallback message.
+ * @param {number} progress - The progress value (expected between 0 and 100).
+ */
 function drawWaveChart(progress) {
     let progressIsValid = true;
     if (progress < 0 || progress > 100 || isNaN(progress)) {
