@@ -1,7 +1,31 @@
+/**
+ * Stores the currently selected board object.
+ * @type {Object}
+ */
 let currentBoard = {}
+
+/**
+ * Stores the currently selected task object.
+ * @type {Object|undefined}
+ */
 let currentTask
+
+/**
+ * Stores the current comments for the selected task or board.
+ * @type {Array|undefined}
+ */
 let currentComments
+
+/**
+ * Indicates whether the Shift key is currently pressed.
+ * @type {boolean}
+ */
 let isShiftPressed = false
+
+/**
+ * Stores the list of current board members.
+ * @type {Array|undefined}
+ */
 let currentMemberList
 
 /**
